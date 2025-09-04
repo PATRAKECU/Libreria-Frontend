@@ -14,7 +14,7 @@
       "descripcion": "Café tostado medio, grano 100% arábica.",
       "precio": 8.50,
       "stock": 30,
-      "categoria": "Cafe"
+      "categoria": "Café"
     },
     {
       "id": 3,
@@ -38,7 +38,7 @@
       "descripcion": "100g de café instantáneo con sabor intenso.",
       "precio": 6.30,
       "stock": 50,
-      "categoria": "Cafe"
+      "categoria": "Café"
     },
     {
       "id": 6,
