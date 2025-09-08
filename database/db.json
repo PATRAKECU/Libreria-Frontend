@@ -1,0 +1,97 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "nombre": "Don Quijote de la Mancha",
+      "descripcion": "Edición de bolsillo de la obra clásica de Miguel de Cervantes.",
+      "precio": 19.99,
+      "stock": 12,
+      "categoria": "Libro"
+    },
+    {
+      "id": 2,
+      "nombre": "Café de Origen Colombia",
+      "descripcion": "Café tostado medio, grano 100% arábica.",
+      "precio": 8.50,
+      "stock": 30,
+      "categoria": "Café"
+    },
+    {
+      "id": 3,
+      "nombre": "Soporte de Madera para Libros",
+      "descripcion": "Soporte ajustable de madera natural.",
+      "precio": 14.75,
+      "stock": 20,
+      "categoria": "Soportes"
+    },
+    {
+      "id": 4,
+      "nombre": "Separador Artístico de Cartón",
+      "descripcion": "Set de 5 separadores con ilustraciones.",
+      "precio": 4.25,
+      "stock": 45,
+      "categoria": "Separadores"
+    },
+    {
+      "id": 5,
+      "nombre": "Café Brasileño Soluble",
+      "descripcion": "100g de café instantáneo con sabor intenso.",
+      "precio": 6.30,
+      "stock": 50,
+      "categoria": "Café"
+    },
+    {
+      "id": 6,
+      "nombre": "Edición Ilustrada de Cien Años de Soledad",
+      "descripcion": "Tapa dura con ilustraciones de Gabriel García Márquez.",
+      "precio": 29.90,
+      "stock": 8,
+      "categoria": "Libro"
+    },
+    {
+      "id": 7,
+      "nombre": "Separador Metálico Minimalista",
+      "descripcion": "Separador de acero inoxidable con acabado mate.",
+      "precio": 5.50,
+      "stock": 25,
+      "categoria": "Separadores"
+    },
+    {
+      "id": 8,
+      "nombre": "Soporte de Metal para Tablet y Libros",
+      "descripcion": "Multiángulo, plegable y ligero.",
+      "precio": 18.00,
+      "stock": 15,
+      "categoria": "Soportes"
+    }
+  ],
+  "clientes": [
+    {
+      "id": 1,
+      "nombre": "Ana Torres",
+      "correo": "ana.torres@example.com",
+      "contraseña": "ana123",
+      "carrito": [],
+      "historialCompras": [],
+      "preferencias": []
+    },
+    {
+      "id": 2,
+      "nombre": "Luis Pérez",
+      "correo": "luis.perez@example.com",
+      "contraseña": "luis456",
+      "carrito": [],
+      "historialCompras": [],
+      "preferencias": []
+    },
+    {
+      "id": 3,
+      "nombre": "María Gómez",
+      "correo": "maria.gomez@example.com",
+      "contraseña": "maria789",
+      "carrito": [],
+      "historialCompras": [],
+      "preferencias": []
+    }
+  ]
+}
