@@ -1,29 +1,45 @@
-/* eslint-disable prettier/prettier */
 import api from './api'
 
-const ENDPOINT = '/products'
+// Libros
+export const getLibros = () => api.get('/libros').then(res => res.data)
+export const createLibro = (data) => api.post('/libros', data).then(res => res.data)
+export const updateLibro = (id, data) => api.put(`/libros/${id}`, data).then(res => res.data)
+export const deleteLibro = (id) => api.delete(`/libros/${id}`).then(() => true)
 
-export const getProductos = async () => {
-  const res = await api.get(ENDPOINT)
-  return res.data
-}
+// Cafés
+export const getCafes = () => api.get('/cafes').then(res => res.data)
+export const createCafe = (data) => api.post('/cafes', data).then(res => res.data)
+export const updateCafe = (id, data) => api.put(`/cafes/${id}`, data).then(res => res.data)
+export const deleteCafe = (id) => api.delete(`/cafes/${id}`).then(() => true)
 
-export const getProductoById = async (id) => {
-  const res = await api.get(`${ENDPOINT}/${id}`)
-  return res.data
-}
+// Separadores
+export const getSeparadores = () => api.get('/separadores').then(res => res.data)
+export const createSeparador = (data) => api.post('/separadores', data).then(res => res.data)
+export const updateSeparador = (id, data) => api.put(`/separadores/${id}`, data).then(res => res.data)
+export const deleteSeparador = (id) => api.delete(`/separadores/${id}`).then(() => true)
 
-export const createProducto = async (producto) => {
-  const res = await api.post(ENDPOINT, producto)
-  return res.data
-}
+// Soportes
+export const getSoportes = () => api.get('/soportes').then(res => res.data)
+export const createSoporte = (data) => api.post('/soportes', data).then(res => res.data)
+export const updateSoporte = (id, data) => api.put(`/soportes/${id}`, data).then(res => res.data)
+export const deleteSoporte = (id) => api.delete(`/soportes/${id}`).then(() => true)
 
-export const updateProducto = async (id, producto) => {
-  const res = await api.put(`${ENDPOINT}/${id}`, producto)
-  return res.data
-}
+// Funciones get unificadas
+export const getTodosLosProductos = async () => {
+  const [libros, cafes, separadores, soportes] = await Promise.all([
+    getLibros(),
+    getCafes(),
+    getSeparadores(),
+    getSoportes()
+  ]);
 
-export const deleteProducto = async (id) => {
-  await api.delete(`${ENDPOINT}/${id}`)
-  return true
-}
+  // Agrega un campo "tipo" para distinguirlos
+  const conTipo = [
+    ...libros.map(p => ({ ...p, tipo: 'LIBRO' })),
+    ...cafes.map(p => ({ ...p, tipo: 'CAFE' })),
+    ...separadores.map(p => ({ ...p, tipo: 'SEPARADOR' })),
+    ...soportes.map(p => ({ ...p, tipo: 'SOPORTE' }))
+  ];
+
+  return conTipo;
+};

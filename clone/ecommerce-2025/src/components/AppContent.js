@@ -4,21 +4,24 @@ import { CContainer, CSpinner } from '@coreui/react'
 
 // routes config
 import routes from '../routes'
+import RutaPrivada from '../components/RutaPrivada'
 
 const AppContent = () => {
   return (
     <CContainer className="px-4" lg>
       <Suspense fallback={<CSpinner color="primary" />}>
         <Routes>
-          {routes.map((route, idx) => {
+          {routes.map((route, index) => {
             return (
               route.element && (
                 <Route
-                  key={idx}
+                  key={index}
                   path={route.path}
-                  exact={route.exact}
-                  name={route.name}
-                  element={<route.element />}
+                  element={
+                    route.private
+                      ? <RutaPrivada><route.element /></RutaPrivada>
+                      : <route.element />
+                  }
                 />
               )
             )

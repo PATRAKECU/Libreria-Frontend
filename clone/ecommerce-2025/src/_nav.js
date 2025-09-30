@@ -3,15 +3,18 @@ import CIcon from '@coreui/icons-react'
 import {
   cilBell,
   cilCalculator,
+  cilCamera,
   cilChartPie,
   cilCursor,
   cilDescription,
   cilDrop,
   cilExternalLink,
+  cilLibraryAdd,
   cilNotes,
   cilPencil,
   cilPeople,
   cilPuzzle,
+  cilSearch,
   cilSpeedometer,
   cilStar,
 } from '@coreui/icons'
@@ -26,20 +29,26 @@ const _nav = [
     component: CNavItem,
     name: 'Lista de Productos',
     to: '/productos',
-    icon: <CIcon icon={cilStar} customClassName="nav-icon" />,    
+    icon: <CIcon icon={cilSearch} customClassName="nav-icon" />,    
   },
   {
     component: CNavItem,
-    name: 'Lista de Clientes',
-    to: '/clientes',
-    icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,    
+    name: 'Galería',
+    to: '/galeria',
+    icon: <CIcon icon={cilCamera} customClassName="nav-icon" />,    
   },
   {
     component: CNavItem,
-    name: 'Registro de Usuario',
-    to: '/registro',
-    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,    
-  }, 
+    name: 'Carrito',
+    to: '/carrito',
+    icon: <CIcon icon={cilLibraryAdd} customClassName="nav-icon" />,    
+  },
+  {
+    component: CNavItem,
+    name: 'Historial de Pedidos',
+    to: '/pedidos/historial',
+    icon: <CIcon icon={cilCursor} customClassName="nav-icon" />,    
+  },
 ]
 
 export default _nav

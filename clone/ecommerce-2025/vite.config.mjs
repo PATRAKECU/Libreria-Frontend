@@ -42,7 +42,17 @@ export default defineConfig(() => {
     server: {
       port: 3000,
       proxy: {
-        // https://vitejs.dev/config/server-options.html
+        '/api': {
+          target: 'http://localhost:8080',
+          changeOrigin: true,
+          secure: false,
+          // 🔑 Esto permite que se envíen cookies como JSESSIONID
+          configure: (proxy) => {
+            proxy.on('proxyReq', (proxyReq, req) => {
+              proxyReq.setHeader('Origin', 'http://localhost:3000')
+            })
+          }
+        }
       },
     },
   }

@@ -9,6 +9,7 @@ import {
   CForm,
   CFormInput,
   CFormFeedback,
+  CFormSelect,
 } from '@coreui/react'
 
 const ProductoModal = ({ visible, onClose, onSave, form, setForm, editingProduct }) => {
@@ -22,10 +23,7 @@ const ProductoModal = ({ visible, onClose, onSave, form, setForm, editingProduct
     }
     if (!form.descripcion || form.descripcion.trim() === '') {
       newErrors.descripcion = 'La descripción es obligatoria'
-    }
-    if (!form.categoria || form.categoria.trim() === '') {
-      newErrors.categoria = 'La categoría es obligatoria'
-    }
+    }    
     if (form.precio === '' || isNaN(form.precio)) {
       newErrors.precio = 'El precio debe ser un número'
     } else if (form.precio <= 0) {
@@ -35,6 +33,9 @@ const ProductoModal = ({ visible, onClose, onSave, form, setForm, editingProduct
       newErrors.stock = 'El stock debe ser un número'
     } else if (form.stock < 0) {
       newErrors.stock = 'El stock no puede ser negativo'
+    }
+    if (!form.tipo || form.tipo.trim() === '') {
+      newErrors.tipo = 'El tipo de producto es obligatorio'
     }
 
     setErrors(newErrors)
@@ -54,6 +55,19 @@ const ProductoModal = ({ visible, onClose, onSave, form, setForm, editingProduct
       </CModalHeader>
       <CModalBody>
         <CForm>
+        <CFormSelect
+          className="mb-2"
+          label="Tipo de producto"
+          value={form.tipo}
+          onChange={(e) => setForm({ ...form, tipo: e.target.value })}
+        >
+          <option value="">Seleccione tipo</option>
+          <option value="LIBRO">Libro</option>
+          <option value="CAFE">Café</option>
+          <option value="SEPARADOR">Separador</option>
+          <option value="SOPORTE">Soporte</option>
+        </CFormSelect>
+        {errors.tipo && <CFormFeedback invalid>{errors.tipo}</CFormFeedback>}
           <CFormInput
             className="mb-2"
             label="Nombre"
@@ -71,15 +85,7 @@ const ProductoModal = ({ visible, onClose, onSave, form, setForm, editingProduct
             onChange={(e) => setForm({ ...form, descripcion: e.target.value })}
           />
           {errors.descripcion && <CFormFeedback invalid>{errors.descripcion}</CFormFeedback>}
-
-          <CFormInput
-            className="mb-2"
-            label="Categoría"
-            value={form.categoria}
-            invalid={!!errors.categoria}
-            onChange={(e) => setForm({ ...form, categoria: e.target.value })}
-          />
-          {errors.categoria && <CFormFeedback invalid>{errors.categoria}</CFormFeedback>}
+          
 
           <CFormInput
             className="mb-2"
@@ -100,6 +106,88 @@ const ProductoModal = ({ visible, onClose, onSave, form, setForm, editingProduct
             onChange={(e) => setForm({ ...form, stock: Number(e.target.value) })}
           />
           {errors.stock && <CFormFeedback invalid>{errors.stock}</CFormFeedback>}
+          {form.tipo === 'LIBRO' && (
+            <>
+              <CFormInput
+                className="mb-2"
+                label="Autor"
+                value={form.autor || ''}
+                onChange={(e) => setForm({ ...form, autor: e.target.value })}
+              />
+              <CFormInput
+                className="mb-2"
+                label="Editorial"
+                value={form.editorial || ''}
+                onChange={(e) => setForm({ ...form, editorial: e.target.value })}
+              />
+              <CFormInput
+                className="mb-2"
+                label="Estado"
+                value={form.estado || ''}
+                onChange={(e) => setForm({ ...form, estado: e.target.value })}
+              />
+            </>
+          )}
+
+          {form.tipo === 'CAFE' && (
+            <>
+              <CFormInput
+                className="mb-2"
+                label="Origen"
+                value={form.origen || ''}
+                onChange={(e) => setForm({ ...form, origen: e.target.value })}
+              />
+              <CFormInput
+                className="mb-2"
+                label="Presentación"
+                value={form.presentacion || ''}
+                onChange={(e) => setForm({ ...form, presentacion: e.target.value })}
+              />
+              <CFormInput
+                className="mb-2"
+                type="number"
+                label="Peso (g)"
+                value={form.pesoGramos || ''}
+                onChange={(e) => setForm({ ...form, pesoGramos: Number(e.target.value) })}
+              />
+            </>
+          )}
+
+          {form.tipo === 'SEPARADOR' && (
+            <>
+              <CFormInput
+                className="mb-2"
+                label="Material"
+                value={form.material || ''}
+                onChange={(e) => setForm({ ...form, material: e.target.value })}
+              />
+              <CFormInput
+                className="mb-2"
+                type="number"
+                label="Dimensiones (cm)"
+                value={form.dimensionesCm || ''}
+                onChange={(e) => setForm({ ...form, dimensionesCm: Number(e.target.value) })}
+              />
+            </>
+          )}
+
+          {form.tipo === 'SOPORTE' && (
+            <>
+              <CFormInput
+                className="mb-2"
+                label="Material"
+                value={form.material || ''}
+                onChange={(e) => setForm({ ...form, material: e.target.value })}
+              />
+              <CFormInput
+                className="mb-2"
+                type="number"
+                label="Peso (lbs)"
+                value={form.peso || ''}
+                onChange={(e) => setForm({ ...form, peso: Number(e.target.value) })}
+              />
+            </>
+          )}
         </CForm>
       </CModalBody>
       <CModalFooter>

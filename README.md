@@ -1,6 +1,6 @@
 # 📚 Librería Virtual - Proyecto eCommerce
 
-Bienvenido al repositorio de la **Librería Virtual**, llamada "Librería Saint Patrick", una plataforma eCommerce desarrollada como proyecto académico. Este sitio permite explorar productos relacionados con la lectura, como libros físicos, café artesanal, separadores y soportes para libros, con un diseño responsivo y una arquitectura profesional.
+Bienvenido al repositorio de la Librería Saint Patrick, una plataforma eCommerce desarrollada como proyecto académico. Este sitio permite explorar productos relacionados con la lectura, como libros físicos, café artesanal, separadores y soportes para libros, con un diseño responsivo, arquitectura profesional y una integración completa con el backend en Java.
 
 ---
 
@@ -15,6 +15,9 @@ La aplicación incluye funcionalidades como:
 - Consumo de datos desde una API RESTful simulada
 - Navegación SPA con React Router
 - Interfaz responsiva y profesional basada en CoreUI
+- Gestión de carrito persistente en sesión
+- Pago de carrito con persistencia en base de datos
+- Consumo de datos desde una API RESTful real (Spring Boot + MySQL)
 
 ---
 
@@ -27,17 +30,24 @@ La aplicación incluye funcionalidades como:
 - **JSON Server** para simular un backend RESTful
 - **Bootstrap 4** para diseño responsivo
 - **JavaScript** para lógica de interacción
+- **React Router DOM** para navegación entre vistas
+- **Session Storage / HttpSession** para persistencia del carrito
+
 
 ### 🔹 Backend
-- **Java** con estructura orientada a objetos
-- Organización profesional de paquetes en **IntelliJ IDEA**
-- Clases como `Producto`, `Usuario`, `Carrito`, con encapsulamiento y herencia
-- Nota: el backend se encuentra en otro repositorio y será integrado próximamente
+- **Spring Boot + Java 17** con arquitectura limpia
+- **Spring Data JPA** para persistencia
+- **MySQL 8.x** como base de datos relacional
+- **DTOs y mapeadores personalizados** para evitar ciclos y controlar la estructura de respuesta
+- **Controladores REST** para cada entidad
+- Gestión de pedidos y productos con trazabilidad completa
+
 
 ### 🔹 Herramientas de documentación
 - **README.md** con capturas, descripción técnica y desafíos
 - **GitHub** para control de versiones y publicación
 - **UML** para modelado de entidades y relaciones
+- **Postman** para pruebas de endpoints
 
 ---
 
@@ -46,8 +56,11 @@ La aplicación incluye funcionalidades como:
 A continuación se muestran ejemplos de visualización de los diferentes módulos actuales del proyecto:
 
 ### 🖥️ Vista en escritorio
-![Captura lista de productos](capturas/productos.png)
-![Captura lista de usuarios](capturas/usuarios.png)
+
+![Lista de Libros](capturas/Libros.png)
+![Carrito de Compras](capturas/Carrito.png)
+![Historial de Pedidos](capturas/HistorialPedidos.png)
+![Galería de Fotos](capturas/Galeria.png)
 
 ---
 
@@ -60,6 +73,19 @@ A continuación se muestran ejemplos de visualización de los diferentes módulo
 ### 🔸 Ruta equivocada hacia la base de datos
 **Problema:** Se presentaba un error 404 (not found) al intentar desplegar la tabla de productos debido a una escritura equivocada del nombre de uno de los campos de la base de datos ficticia.  
 **Solución:** Se corrigió el llamado y posteriormente los datos fueron presentados sin problemas.
+
+## 🔸 Integración real con backend
+**Problema:** La aplicación usaba JSON Server simulado, lo que limitaba la persistencia real.
+**Solución:** Se migró a un backend real con Spring Boot y MySQL, ajustando rutas, servicios y DTOs.
+
+## 🔸 Serialización de relaciones bidireccionales
+**Problema:** Al consumir pedidos, los ítems no se cargaban correctamente por relaciones LAZY.
+**Solución:** Se corrigió el mapeo en entidades y se recargó el pedido con EntityGraph para incluir productos.
+
+## 🔸 Persistencia del carrito
+**Problema:** El carrito se perdía al recargar la página.
+**Solución:** Se implementó persistencia en sesión (HttpSession) y limpieza automática tras el pago.
+
 
 ---
 

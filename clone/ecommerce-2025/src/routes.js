@@ -1,8 +1,14 @@
 import React from 'react'
 
+
 const Productos = React.lazy(() => import('./views/productos/Productos'))
-const Clientes = React.lazy(() => import('./views/clientes/Clientes'))
-const RegistroUsuario = React.lazy(() => import('./views/registro/RegistroUsuario'))
+//const Clientes = React.lazy(() => import('./views/clientes/Clientes'))
+//const CrearPedido = React.lazy(() => import('./views/pedidos/CrearPedido'))
+const HistorialPedidos = React.lazy(() => import('./views/pedidos/HistorialPedidos'))
+const Carrito = React.lazy(() => import('./views/carrito/Carrito'))
+const Galeria = React.lazy(() => import('./views/galeria/Galeria'))
+const Inicio = React.lazy(() => import('./views/inicio/Inicio'))
+const RutaPrivada = React.lazy(() => import('./components/RutaPrivada'))
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
@@ -100,9 +106,14 @@ const routes = [
   { path: '/notifications/modals', name: 'Modals', element: Modals },
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
-  { path: '/productos', name: 'Productos', element: Productos},
-  { path: '/clientes', name: 'Clientes', element: Clientes},
-  { path: '/registro', name: 'Registro de Usuario', element: RegistroUsuario },
+  { path: '/productos', name: 'Productos', element: Productos, private: true},
+  //{ path: '/pedidos/crear', name: 'Crear un Pedido', element: CrearPedido, private: true },
+  { path: '/pedidos/historial', name: 'Historial de Pedidos', element: HistorialPedidos, private: true },
+  { path: '/carrito', name: 'Carrito', element: Carrito, private: true },
+  { path: '/galeria', name: 'Galeria', element: Galeria, private: true },
+  { path: '/inicio', name: 'Inicio', element: Inicio, private: true },
+  //{ path: '/clientes', name: 'Clientes', element: Clientes},  
+  { path: '/ruta', name: 'Ruta Privada', element: RutaPrivada },
 ]
 
 export default routes
