@@ -3,14 +3,14 @@ import axios from 'axios'
 
 // Base URL del backend
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api', // Debe conicidir con backend
+  baseURL: 'https://unshirted-blanch-indigenously.ngrok-free.dev/api', // Debe conicidir con backend
   headers: {
     'Content-Type': 'application/json',
   },
   withCredentials: true // 🔑 esto es lo que activa el envío de cookies
 })
 
-// Interceptor de solicitud: agrega el token si existe
+// Interceptor de solicitud api: agrega el token si existe
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token')

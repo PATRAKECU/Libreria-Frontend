@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppContent, AppSidebar, AppFooter, AppHeader } from '../components/index'
+import { AppContent, AppSidebar, AppFooter, AppHeader, Chatbot } from '../components/index'
 
 const DefaultLayout = () => {
   return (
@@ -10,6 +10,7 @@ const DefaultLayout = () => {
         <div className="body flex-grow-1">
           <AppContent />
         </div>
+        <Chatbot />
         <AppFooter />
       </div>
     </div>

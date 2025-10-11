@@ -27,7 +27,6 @@ La aplicación incluye funcionalidades como:
 - **React** para construir una SPA dinámica y modular
 - **CoreUI React Admin Template** como base visual
 - **Axios** para consumir datos desde la API
-- **JSON Server** para simular un backend RESTful
 - **Bootstrap 4** para diseño responsivo
 - **JavaScript** para lógica de interacción
 - **React Router DOM** para navegación entre vistas
@@ -61,6 +60,7 @@ A continuación se muestran ejemplos de visualización de los diferentes módulo
 ![Carrito de Compras](capturas/Carrito.png)
 ![Historial de Pedidos](capturas/HistorialPedidos.png)
 ![Galería de Fotos](capturas/Galeria.png)
+![Chatbot](capturas/Chatbot.png)
 
 ---
 
@@ -85,6 +85,10 @@ A continuación se muestran ejemplos de visualización de los diferentes módulo
 ## 🔸 Persistencia del carrito
 **Problema:** El carrito se perdía al recargar la página.
 **Solución:** Se implementó persistencia en sesión (HttpSession) y limpieza automática tras el pago.
+
+## 🔸 Limitación de uso de api key en Google Cloud
+**Problema:** No se podían acceder a tecnologías de chatbot con la api key.
+**Solución:** Se implementó facturación en la cuenta y se pudo acceder a herramientas más potentes con VertexAI.
 
 
 ---

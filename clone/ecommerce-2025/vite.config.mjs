@@ -12,7 +12,7 @@ export default defineConfig(() => {
     css: {
       postcss: {
         plugins: [
-          autoprefixer({}), // add options if needed
+          autoprefixer({})
         ],
       },
     },
@@ -42,18 +42,20 @@ export default defineConfig(() => {
     server: {
       port: 3000,
       proxy: {
-        '/api': {
-          target: 'http://localhost:8080',
+        '/mcp': {
+          target: 'https://libreriasaintpatrick.fastmcp.app',
           changeOrigin: true,
           secure: false,
-          // 🔑 Esto permite que se envíen cookies como JSESSIONID
           configure: (proxy) => {
             proxy.on('proxyReq', (proxyReq, req) => {
               proxyReq.setHeader('Origin', 'http://localhost:3000')
+              proxyReq.setHeader('Access-Control-Request-Headers', 'Authorization, Content-Type')
             })
           }
         }
-      },
-    },
+      }
+    }
   }
 })
+
+
